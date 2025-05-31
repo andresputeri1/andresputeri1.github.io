@@ -98,6 +98,21 @@
             padding-left: 20px;
         }
 
+        .subjects-link {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .subjects-link:hover {
+            background-color: #2980b9;
+        }
+
         @media (max-width: 768px) {
             .cv-container {
                 grid-template-columns: 1fr;
@@ -184,8 +199,8 @@
             <section>
                 <h2>Recent Subjects</h2>
                 <div class="experience-item">
-                    <h3>Subjects</h3>
                     <p>This page has a list of my lecture notes based on the courses that I have taken.</p>
+                    <a href="subjects.html" class="subjects-link">View Subjects & Lecture Notes</a>
                 </div>
             </section>
         </div>
