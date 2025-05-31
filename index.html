@@ -71,6 +71,17 @@
             margin-bottom: 8px;
         }
 
+        /* Make all contact links look like normal text */
+        .contact-info a {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+            color: #007acc;
+        }
+
         .skills-list {
             list-style: none;
         }
@@ -113,6 +124,13 @@
             background-color: #2980b9;
         }
 
+        .copyright {
+            text-align: center;
+            color: #999;
+            margin-top: 40px;
+            font-size: 0.95em;
+        }
+
         @media (max-width: 768px) {
             .cv-container {
                 grid-template-columns: 1fr;
@@ -129,7 +147,7 @@
         <div class="sidebar">
             <img class="profile-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Profile">
             
-           <div class="contact-info">
+            <div class="contact-info">
                 <h2>Contact</h2>
                 <p>📧 <a href="mailto:andres.puteri06@gmail.com">andres.puteri06@gmail.com</a></p>
                 <p> Melbourne, Australia</p>
@@ -162,7 +180,7 @@
 
             <section>
                 <h2>Summary</h2>
-                <p>I am a pure mathematics student at the University of Melbourne's School of Mathematics and Statistics. My interests include representation theory, machine learning, and its applications.</p>
+                <p>I am a pure mathematics student at the University of Melbourne's School of Mathematics and Statistics. My interests include representation theory, machine learning, and its applications to mathematics and finance.</p>
             </section>
 
             <section>
@@ -205,6 +223,9 @@
                 </div>
             </section>
         </div>
+    </div>
+    <div class="copyright">
+        &copy; Copyright 2021. All Rights Reserved.
     </div>
 </body>
 </html>
