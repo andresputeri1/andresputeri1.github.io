@@ -1,9 +1,12 @@
-<!DOCTYPE html>More actions
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andres Puteri</title>
+    <title>Andrés Puteri</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -12,143 +15,958 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
             line-height: 1.6;
-            color: #333;
+        }
+
+        /* Vanta.js Background */
+        #vanta-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: transparent;
+            z-index: 1000;
+            padding: 2rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff6b35;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ff6b35;
+            background: rgba(255, 107, 53, 0.1);
+        }
+
+        /* Main Content Container */
+        .main-container {
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Page Sections */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Page */
+        .home-hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #ff6b35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* CV Page */
+        .cv-page {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
+            padding: 3rem 2rem;
         }
 
-        .cv-container {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 30px;
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #ff6b35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .sidebar {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
+        .cv-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
         }
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: block;
-            background-color: #ddd;
+        .cv-section h3 {
+            font-size: 1.5rem;
+            color: #ff6b35;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .main-content {
-            padding: 20px;
+        .cv-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        h1 {
-            color: #2c3e50;
-            color: #1a237e;
-            margin-bottom: 10px;
+        .cv-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
         }
 
-        h2 {
-            color: #3498db;
-            border-bottom: 2px solid #3498db;
-            color: #1a237e;
-            border-bottom: 2px solid #1a237e;
-            padding-bottom: 5px;
-            margin: 20px 0 15px 0;
+        .cv-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
         }
 
-        h3 {
-            color: #2c3e50;
-            color: #1a237e;
-            margin: 15px 0 5px 0;
-        }
-
-@@ -79,7 +79,7 @@
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-            color: #007acc;
-            color: #0d1335;
-        }
-
-        .skills-list {
-@@ -111,7 +111,7 @@
-
-        .subjects-link {
-            display: inline-block;
-            background-color: #3498db;
-            background-color: #1a237e;
+        .cv-item-title {
+            font-size: 1.25rem;
+            font-weight: 600;
             color: white;
-            padding: 10px 20px;
+        }
+
+        .cv-item-date {
+            color: #ff6b35;
+            font-weight: 500;
+        }
+
+        .cv-item-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-item-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .contact-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            border-radius: 50%;
+            color: white;
             text-decoration: none;
-@@ -121,7 +121,7 @@
+            transition: all 0.3s ease;
         }
 
-        .subjects-link:hover {
-            background-color: #2980b9;
-            background-color: #0d1335;
+        .social-link:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
         }
 
-        .copyright {
-@@ -180,52 +180,52 @@
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
 
-            <section>
-                <h2>Summary</h2>
-                <p>I am a pure mathematics student at the University of Melbourne's School of Mathematics and Statistics. My interests include representation theory, machine learning, and its applications to mathematics and finance.</p>
-                <p>I am a pure mathematics student at the University of Melbourne's School of Mathematics and Statistics. My interests include representation theory, machine learning, and its applications in mathematics and finance.</p>
-            </section>
+        .skill-category {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(255, 140, 66, 0.2) 100%);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
 
-            <section>
-                <h2>Work Experience</h2>
+        .skill-category h4 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
 
-                <div class="experience-item">
-                    <h3>VCE Mathematics Tutor</h3>
-                    <p class="period">HZ Tutoring | 2024 - Present</p>
-                    <ul>
-                        <li>Lead VCE Mathematical Methods and Specialist Mathematics tutor </li>
-                        <li>Created resources and managed a number of students </li>
-                        <li>Garnered hundreds of hours of teaching experience.</li>
-                    </ul>
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.25rem 0;
+        }
+
+        /* Notes Page */
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .note-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .note-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 107, 53, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+        }
+
+        .note-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .note-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Interests Page */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .interest-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 107, 53, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+        }
+
+        .interest-icon {
+            font-size: 3rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .interest-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .interest-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Copyright Footer */
+        .copyright-footer {
+            position: fixed;
+            bottom: 1rem;
+            left: 0;
+            right: 0;
+            padding: 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        .copyright-footer .copyright-text {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .copyright-footer .copyright-name {
+            color: rgba(255, 107, 53, 0.6);
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cv-item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .notes-grid,
+            .interests-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 0 0 1rem 1rem;
+            }
+            
+            .nav-links.mobile-open {
+                display: flex;
+            }
+        }
+
+        /* Loading animation for vanta */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 107, 53, 0.3);
+            border-top: 3px solid #ff6b35;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+    </div>
+
+    <div id="vanta-background"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">AP</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="nav-link active" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('cv')">CV</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('notes')">Lecture Notes</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('interests')">Interests & Expertise</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="home-hero">
+                <div class="hero-content">
+                    <h1>Andrés Puteri</h1>
+                    <p>Mathematics Student & Tutor</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary" onclick="showPage('cv')">View CV</a>
+                        <a href="#" class="btn btn-secondary" onclick="showPage('notes')">Lecture Notes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CV Page -->
+        <div id="cv" class="page">
+            <div class="cv-page">
+                <h1 class="page-title">Curriculum Vitae</h1>
+                
+                <div class="contact-section">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>andres.puteri@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>0431 426 978</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Melbourne, Victoria, Australia</span>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/andr%C3%A9s-puteri/" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/andresputeri1" class="social-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/andres.puteri/" class="social-link" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="experience-item">
-                    <h3>Content creation</h3>
-                    <p class="period">VCE Vanguard Education | 2025 - present</p>
-                    <ul>
-                        <li>Developed and maintained multiple resources that have been used by hundreds of students across the state</li>
-                        <li>Collaborated with some of the most bright and exceptional students and tutors.</li>
-                    </ul>
-                </div>
-            </section>
+                <div class="cv-section">
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <div class="cv-item-title">The University of Melbourne</div>
+                            <div class="cv-item-date">2025 — 2027</div>
+                        </div>
+                        <div class="cv-item-subtitle">Bachelor of Science</div>
+                        <div class="cv-item-description">
+                            First Year BSci student focusing on pure/computational mathematics and statistics. 
+                            Currently studying Linear Algebra, Data Analysis, Foundations of Algorithms, and Principles of Finance.
+                        </div>
+                    </div>
 
-            <section>
-                <h2>Education</h2>
-                <div class="education-item">
-                    <h3>Bachelor of Science in Pure Maths</h3>
-                    <p class="period">University of Melbourne | 2025 - 2027</p>
-                    <p>Major: Pure Math | Finance | Computer Science</p>
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <div class="cv-item-title">Parade College, Bundoora</div>
+                            <div class="cv-item-date">2019 — 2024</div>
+                        </div>
+                        <div class="cv-item-subtitle">VCE Graduate</div>
+                        <div class="cv-item-description">
+                            Certificate of education completed with focus on accounting, mathematical methods, and chemistry.
+                            ATAR: 90.30
+                        </div>
+                    </div>
                 </div>
-            </section>
 
-            <section>
-                <h2>Recent Subjects</h2>
-                <div class="experience-item">
-                    <p>This page has a list of my lecture notes based on the courses that I have taken.</p>
-                    <a href="subjects.html" class="subjects-link">View Subjects & Lecture Notes</a>
+                <div class="cv-section">
+                    <h3><i class="fas fa-briefcase"></i> Experience</h3>
+                    
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <div class="cv-item-title">VCE Vanguard Coaching</div>
+                            <div class="cv-item-date">21/01/25 — present</div>
+                        </div>
+                        <div class="cv-item-subtitle">Publisher and Editor/Assistant</div>
+                        <div class="cv-item-description">
+                            Helping to edit, format and publish resources produced by the head VCE coaching service. 
+                            Developing educational materials and supporting content creation for VCE students.
+                        </div>
+                    </div>
+
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <div class="cv-item-title">HZ Tutoring</div>
+                            <div class="cv-item-date">14/11/24 — present</div>
+                        </div>
+                        <div class="cv-item-subtitle">Lead math tutor</div>
+                        <div class="cv-item-description">
+                            Tutoring Mathematical Methods units 1/2 and 3/4. Written and prepared custom slides and resources for students, 
+                            developing engaging lesson plans that have proven to be an effective learning method for all students.
+                        </div>
+                    </div>
+
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <div class="cv-item-title">Coles</div>
+                            <div class="cv-item-date">24/2 — 31/12/24</div>
+                        </div>
+                        <div class="cv-item-subtitle">Customer Service</div>
+                        <div class="cv-item-description">
+                            Developed strong customer service skills and gained experience in retail operations and team collaboration.
+                        </div>
+                    </div>
                 </div>
-            </section>
+
+                <div class="cv-section">
+                    <h3><i class="fas fa-cogs"></i> Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Programming</h4>
+                            <ul class="skill-list">
+                                <li>Python</li>
+                                <li>LaTeX</li>
+                                <li>C++</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Soft Skills</h4>
+                            <ul class="skill-list">
+                                <li>Communication</li>
+                                <li>Resilient</li>
+                                <li>Kind</li>
+                                <li>Hardworking</li>
+                                <li>Dedicated</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Languages</h4>
+                            <ul class="skill-list">
+                                <li>English (Native)</li>
+                                <li>Spanish (Conversational)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lecture Notes Page -->
+        <div id="notes" class="page">
+            <div class="cv-page">
+                <h1 class="page-title">Lecture Notes</h1>
+                <div class="notes-grid">
+                    <div class="note-card">
+                        <div class="note-title">
+                            <i class="fas fa-calculator"></i>
+                            Linear Algebra
+                        </div>
+                        <div class="note-description">
+                            Comprehensive notes covering vector spaces, linear transformations, eigenvalues and eigenvectors, 
+                            and matrix operations. Includes worked examples and applications in data science.
+                        </div>
+                    </div>
+                    
+                    <div class="note-card">
+                        <div class="note-title">
+                            <i class="fas fa-chart-bar"></i>
+                            Data Analysis
+                        </div>
+                        <div class="note-description">
+                            Statistical methods, probability distributions, hypothesis testing, and regression analysis. 
+                            Practical applications using Python and statistical software.
+                        </div>
+                    </div>
+                    
+                    <div class="note-card">
+                        <div class="note-title">
+                            <i class="fas fa-code"></i>
+                            Foundations of Algorithms
+                        </div>
+                        <div class="note-description">
+                            Algorithm design paradigms, complexity analysis, sorting and searching algorithms, 
+                            graph algorithms, and dynamic programming techniques.
+                        </div>
+                    </div>
+                    
+                    <div class="note-card">
+                        <div class="note-title">
+                            <i class="fas fa-dollar-sign"></i>
+                            Principles of Finance
+                        </div>
+                        <div class="note-description">
+                            Time value of money, risk and return, portfolio theory, capital budgeting, 
+                            and financial markets analysis.
+                        </div>
+                    </div>
+                    
+                    <div class="note-card">
+                        <div class="note-title">
+                            <i class="fas fa-square-root-alt"></i>
+                            Mathematical Methods
+                        </div>
+                        <div class="note-description">
+                            VCE Mathematical Methods notes covering calculus, probability, statistics, 
+                            and functions. Formatted for easy understanding and exam preparation.
+                        </div>
+                    </div>
+                    
+                    <div class="note-card">
+                        <div class="note-title">
+                            <i class="fas fa-flask"></i>
+                            Chemistry Fundamentals
+                        </div>
+                        <div class="note-description">
+                            Chemical bonding, thermodynamics, kinetics, and organic chemistry principles. 
+                            Includes laboratory procedures and safety protocols.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interests Page -->
+        <div id="interests" class="page">
+            <div class="cv-page">
+                <h1 class="page-title">Interests & Expertise</h1>
+                <div class="interests-grid">
+                    <div class="interest-card">
+                        <div class="interest-icon"><i class="fas fa-calculator"></i></div>
+                        <div class="interest-title">Mathematics</div>
+                        <div class="interest-description">
+                            Passionate about pure and applied mathematics, with particular interest in linear algebra, 
+                            calculus, and statistical analysis. Enjoy solving complex mathematical problems and 
+                            exploring mathematical concepts.
+                        </div>
+                    </div>
+                    
+                    <div class="interest-card">
+                        <div class="interest-icon"><i class="fas fa-code"></i></div>
+                        <div class="interest-title">Programming</div>
+                        <div class="interest-description">
+                            Proficient in Python, C++, and LaTeX. Interested in algorithm development, 
+                            data analysis, and computational mathematics. Always exploring new programming 
+                            paradigms and technologies.
+                        </div>
+                    </div>
+                    
+                    <div class="interest-card">
+                        <div class="interest-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <div class="interest-title">Education</div>
+                        <div class="interest-description">
+                            Dedicated to helping students understand mathematics through clear explanations 
+                            and engaging teaching methods. Experience in creating educational resources 
+                            and tutoring students at various levels.
+                        </div>
+                    </div>
+                    
+                    <div class="interest-card">
+                        <div class="interest-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="interest-title">Data Science</div>
+                        <div class="interest-description">
+                            Exploring the intersection of mathematics, statistics, and computer science. 
+                            Interested in machine learning, data visualization, and extracting insights 
+                            from complex datasets.
+                        </div>
+                    </div>
+                    
+                    <div class="interest-card">
+                        <div class="interest-icon"><i class="fas fa-heart"></i></div>
+                        <div class="interest-title">Philanthropy</div>
+                        <div class="interest-description">
+                            Participated in Youth in Philanthropy program, demonstrating commitment to 
+                            community service and social responsibility. Believe in using skills and 
+                            knowledge to make a positive impact.
+                        </div>
+                    </div>
+                    
+                    <div class="interest-card">
+                        <div class="interest-icon"><i class="fas fa-flask"></i></div>
+                        <div class="interest-title">Science</div>
+                        <div class="interest-description">
+                            Strong foundation in chemistry and scientific methodology. Interested in 
+                            the application of mathematical principles to solve real-world scientific 
+                            problems and research.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="copyright">
-        &copy; Copyright 2025 Andres Puteri. All Rights Reserved.
-    </div>
+
+    <footer class="copyright-footer">
+        <div class="copyright-text">
+            © 2025 <span class="copyright-name">Andrés Puteri</span>. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        let vantaEffect;
+
+        // Initialize Vanta.js background
+        function initVanta() {
+            try {
+                vantaEffect = VANTA.NET({
+                    el: "#vanta-background",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.00,
+                    minWidth: 200.00,
+                    scale: 1.00,
+                    scaleMobile: 1.00,
+                    color: 0xff6b35,
+                    backgroundColor: 0x000000,
+                    points: 15.00,
+                    maxDistance: 25.00,
+                    spacing: 15.00
+                });
+                
+                // Hide loading overlay once vanta is loaded
+                setTimeout(() => {
+                    const loadingOverlay = document.getElementById('loadingOverlay');
+                    loadingOverlay.classList.add('hidden');
+                }, 1000);
+                
+            } catch (error) {
+                console.log('Vanta.js failed to load, using fallback background');
+                document.getElementById('vanta-background').style.background = 
+                    'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)';
+                const loadingOverlay = document.getElementById('loadingOverlay');
+                loadingOverlay.classList.add('hidden');
+            }
+        }
+
+        // Navigation functionality
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Add active class to corresponding nav link
+            const activeLink = document.querySelector(`[onclick="showPage('${pageId}')"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Close mobile menu if open
+            const navLinksEl = document.getElementById('navLinks');
+            navLinksEl.classList.remove('mobile-open');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('mobile-open');
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Wait a bit for Three.js to load
+            setTimeout(initVanta, 500);
+        });
+
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', (e) => {
+            const page = e.state?.page || 'home';
+            showPage(page);
+        });
+
+        // Update URL when navigating
+        const originalShowPage = showPage;
+        showPage = function(pageId) {
+            originalShowPage(pageId);
+            history.pushState({ page: pageId }, '', `#${pageId}`);
+        };
+
+        // Initialize page based on URL hash
+        const initialPage = window.location.hash.slice(1) || 'home';
+        if (['home', 'cv', 'notes', 'interests'].includes(initialPage)) {
+            showPage(initialPage);
+        }
+
+        // Cleanup vanta on page unload
+        window.addEventListener('beforeunload', () => {
+            if (vantaEffect) {
+                vantaEffect.destroy();
+            }
+        });
+
+        // Resize handler for vanta
+        window.addEventListener('resize', () => {
+            if (vantaEffect) {
+                vantaEffect.resize();
+            }
+        });
+    </script>
 </body>
 </html>
