@@ -89,23 +89,6 @@
             position: relative;
         }
 
-        /* Page Sections */
-        .page {
-            display: none;
-            min-height: 100vh;
-            padding: 2rem;
-        }
-
-        .page.active {
-            display: block;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         /* Home Page */
         .home-hero {
             display: flex;
@@ -114,6 +97,7 @@
             min-height: 100vh;
             text-align: center;
             position: relative;
+            padding: 2rem;
         }
 
         .hero-content h1 {
@@ -173,242 +157,6 @@
             transform: translateY(-2px);
         }
 
-        /* CV Page */
-        .cv-page {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        .page-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            text-align: center;
-            background: linear-gradient(135deg, #ffffff 0%, #ff6b35 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .cv-section {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .cv-section h3 {
-            font-size: 1.5rem;
-            color: #ff6b35;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .cv-item {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .cv-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-
-        .cv-item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .cv-item-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: white;
-        }
-
-        .cv-item-date {
-            color: #ff6b35;
-            font-weight: 500;
-        }
-
-        .cv-item-subtitle {
-            color: rgba(255, 255, 255, 0.7);
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-
-        .cv-item-description {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
-
-        .contact-section {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .skill-category {
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(255, 140, 66, 0.2) 100%);
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            border: 1px solid rgba(255, 107, 53, 0.3);
-        }
-
-        .skill-category h4 {
-            color: #ff6b35;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            color: rgba(255, 255, 255, 0.8);
-            padding: 0.25rem 0;
-        }
-
-        /* Notes Page */
-        .notes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .note-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .note-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 107, 53, 0.3);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
-        }
-
-        .note-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #ff6b35;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .note-description {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
-
-        /* Interests Page */
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .interest-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .interest-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 107, 53, 0.3);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
-        }
-
-        .interest-icon {
-            font-size: 3rem;
-            color: #ff6b35;
-            margin-bottom: 1rem;
-        }
-
-        .interest-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .interest-description {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
-
         /* Copyright Footer */
         .copyright-footer {
             position: fixed;
@@ -449,22 +197,6 @@
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .cv-item-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .notes-grid,
-            .interests-grid {
-                grid-template-columns: 1fr;
-                padding: 1rem;
             }
         }
 
@@ -546,251 +278,27 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo" onclick="showPage('home')">AP</a>
+            <a href="index.html" class="logo">AP</a>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#" class="nav-link active" onclick="showPage('home')">Home</a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('cv')">CV</a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('notes')">Lecture Notes</a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('interests')">Interests & Expertise</a></li>
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="cv.html" class="nav-link">CV</a></li>
+                <li><a href="notes.html" class="nav-link">Lecture Notes</a></li>
+                <li><a href="interests.html" class="nav-link">Interests & Expertise</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="main-container">
-        <!-- Home Page -->
-        <div id="home" class="page active">
-            <div class="home-hero">
-                <div class="hero-content">
-                    <h1>Andrés Puteri</h1>
-                    <p>Mathematics Student & Tutor</p>
-                    <div class="hero-buttons">
-                        <a href="#" class="btn btn-primary" onclick="showPage('cv')">View CV</a>
-                        <a href="#" class="btn btn-secondary" onclick="showPage('notes')">Lecture Notes</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CV Page -->
-        <div id="cv" class="page">
-            <div class="cv-page">
-                <h1 class="page-title">Curriculum Vitae</h1>
-                
-                <div class="contact-section">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>andres.puteri@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>0431 426 978</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Melbourne, Victoria, Australia</span>
-                        </div>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/andr%C3%A9s-puteri/" class="social-link" target="_blank" title="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/andresputeri1" class="social-link" target="_blank" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.instagram.com/andres.puteri/" class="social-link" target="_blank" title="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="cv-section">
-                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                    
-                    <div class="cv-item">
-                        <div class="cv-item-header">
-                            <div class="cv-item-title">The University of Melbourne</div>
-                            <div class="cv-item-date">2025 — 2027</div>
-                        </div>
-                        <div class="cv-item-subtitle">Bachelor of Science</div>
-                        <div class="cv-item-description">
-                            First Year BSci student focusing on pure/computational mathematics and statistics. 
-                            Currently studying Linear Algebra, Data Analysis, Foundations of Algorithms, and Principles of Finance.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cv-section">
-                    <h3><i class="fas fa-briefcase"></i> Experience</h3>
-                    
-                    <div class="cv-item">
-                        <div class="cv-item-header">
-                            <div class="cv-item-title">VCE Vanguard Coaching</div>
-                            <div class="cv-item-date">21/01/25 — present</div>
-                        </div>
-                        <div class="cv-item-subtitle">Publisher and Editor/Assistant</div>
-                        <div class="cv-item-description">
-                            Helping to edit, format and publish resources produced by the head VCE coaching service. 
-                            Developing educational materials and supporting content creation for VCE students.
-                        </div>
-                    </div>
-
-                    <div class="cv-item">
-                        <div class="cv-item-header">
-                            <div class="cv-item-title">HZ Tutoring</div>
-                            <div class="cv-item-date">14/11/24 — present</div>
-                        </div>
-                        <div class="cv-item-subtitle">Lead math tutor</div>
-                        <div class="cv-item-description">
-                            Tutoring Mathematical Methods units 1/2 and 3/4. Written and prepared custom slides and resources for students, 
-                            developing engaging lesson plans that have proven to be an effective learning method for all students.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cv-section">
-                    <h3><i class="fas fa-cogs"></i> Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <h4>Programming</h4>
-                            <ul class="skill-list">
-                                <li>Python</li>
-                                <li>LaTeX</li>
-                                <li>C++</li>
-                            </ul>
-                        </div>
-                        <div class="skill-category">
-                            <h4>Soft Skills</h4>
-                            <ul class="skill-list">
-                                <li>Communication</li>
-                                <li>Resilient</li>
-                                <li>Kind</li>
-                                <li>Hardworking</li>
-                                <li>Dedicated</li>
-                            </ul>
-                        </div>
-                        <div class="skill-category">
-                            <h4>Languages</h4>
-                            <ul class="skill-list">
-                                <li>English (Native)</li>
-                                <li>Spanish (Conversational)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Lecture Notes Page -->
-        <div id="notes" class="page">
-            <div class="cv-page">
-                <h1 class="page-title">Lecture Notes</h1>
-                <div class="notes-grid">
-                    <div class="note-card">
-                        <div class="note-title">
-                            <i class="fas fa-calculator"></i>
-                            Linear Algebra
-                        </div>
-                        <div class="note-description">
-                            Comprehensive notes covering vector spaces, linear transformations, eigenvalues and eigenvectors, 
-                            and matrix operations. Includes worked examples and applications in data science.
-                        </div>
-                    </div>
-                    
-                    <div class="note-card" onclick="window.open('Calc_1_notes.pdf', '_blank')" style="cursor: pointer;">
-                        <div class="note-title">
-                            <i class="fas fa-integral"></i>
-                            Calculus 1
-                        </div>
-                        <div class="note-description">
-                            Introduction to differential calculus including limits, derivatives, and applications. 
-                            Covers differentiation rules, optimization problems, and related rates.
-                            <br><br><strong>Click to view PDF notes</strong>
-                        </div>
-                    </div>
-                    
-                    <div class="note-card">
-                        <div class="note-title">
-                            <i class="fas fa-function"></i>
-                            Calculus 2
-                        </div>
-                        <div class="note-description">
-                            Advanced calculus topics including integration techniques, infinite series, 
-                            and applications of integration. Covers area, volume, and arc length calculations.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Interests Page -->
-        <div id="interests" class="page">
-            <div class="cv-page">
-                <h1 class="page-title">Interests & Expertise</h1>
-                <div class="interests-grid">
-                    <div class="interest-card">
-                        <div class="interest-icon"><i class="fas fa-calculator"></i></div>
-                        <div class="interest-title">Mathematics</div>
-                        <div class="interest-description">
-                            Passionate about pure and applied mathematics, with particular interest in linear algebra, 
-                            calculus, and statistical analysis. Enjoy solving complex mathematical problems and 
-                            exploring mathematical concepts.
-                        </div>
-                    </div>
-                    
-                    <div class="interest-card">
-                        <div class="interest-icon"><i class="fas fa-code"></i></div>
-                        <div class="interest-title">Programming</div>
-                        <div class="interest-description">
-                            Proficient in Python, C++, and LaTeX. Interested in algorithm development, 
-                            data analysis, and computational mathematics. Always exploring new programming 
-                            paradigms and technologies.
-                        </div>
-                    </div>
-                    
-                    <div class="interest-card">
-                        <div class="interest-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                        <div class="interest-title">Education</div>
-                        <div class="interest-description">
-                            Dedicated to helping students understand mathematics through clear explanations 
-                            and engaging teaching methods. Experience in creating educational resources 
-                            and tutoring students at various levels.
-                        </div>
-                    </div>
-                    
-                    <div class="interest-card">
-                        <div class="interest-icon"><i class="fas fa-chart-line"></i></div>
-                        <div class="interest-title">Data Science</div>
-                        <div class="interest-description">
-                            Exploring the intersection of mathematics, statistics, and computer science. 
-                            Interested in machine learning, data visualization, and extracting insights 
-                            from complex datasets.
-                        </div>
-                    </div>
-                    
-                    <div class="interest-card">
-                        <div class="interest-icon"><i class="fas fa-heart"></i></div>
-                        <div class="interest-title">Philanthropy</div>
-                        <div class="interest-description">
-                            Participated in Youth in Philanthropy program, demonstrating commitment to 
-                            community service and social responsibility. Believe in using skills and 
-                            knowledge to make a positive impact.
-                        </div>
-                    </div>
-                    
-                    <div class="interest-card">
-                        <div class="interest-icon"><i class="fas fa-flask"></i></div>
-                        <div class="interest-title">Science</div>
-                        <div class="interest-description">
-                            Strong foundation in chemistry and scientific methodology. Interested in 
-                            the application of mathematical principles to solve real-world scientific 
-                            problems and research.
-                        </div>
-                    </div>
+        <div class="home-hero">
+            <div class="hero-content">
+                <h1>Andrés Puteri</h1>
+                <p>Mathematics Student & Tutor</p>
+                <div class="hero-buttons">
+                    <a href="cv.html" class="btn btn-primary">View CV</a>
+                    <a href="notes.html" class="btn btn-secondary">Lecture Notes</a>
                 </div>
             </div>
         </div>
@@ -839,37 +347,6 @@
             }
         }
 
-        // Navigation functionality
-        function showPage(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Remove active class from all nav links
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Add active class to corresponding nav link
-            const activeLink = document.querySelector(`[onclick="showPage('${pageId}')"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
-            
-            // Close mobile menu if open
-            const navLinksEl = document.getElementById('navLinks');
-            navLinksEl.classList.remove('mobile-open');
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
         // Mobile menu toggle
         function toggleMobileMenu() {
             const navLinks = document.getElementById('navLinks');
@@ -881,25 +358,6 @@
             // Wait a bit for Three.js to load
             setTimeout(initVanta, 500);
         });
-
-        // Handle browser back/forward buttons
-        window.addEventListener('popstate', (e) => {
-            const page = e.state?.page || 'home';
-            showPage(page);
-        });
-
-        // Update URL when navigating
-        const originalShowPage = showPage;
-        showPage = function(pageId) {
-            originalShowPage(pageId);
-            history.pushState({ page: pageId }, '', `#${pageId}`);
-        };
-
-        // Initialize page based on URL hash
-        const initialPage = window.location.hash.slice(1) || 'home';
-        if (['home', 'cv', 'notes', 'interests'].includes(initialPage)) {
-            showPage(initialPage);
-        }
 
         // Cleanup vanta on page unload
         window.addEventListener('beforeunload', () => {
