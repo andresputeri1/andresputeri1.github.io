@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrés Puteri</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js"></script>
+    <title>Your Name</title>
     <style>
         * {
             margin: 0;
@@ -15,363 +12,419 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #000000;
-            color: #ffffff;
-            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
+            background-color: #000;
+            color: #fff;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            transition: all 0.3s ease;
         }
 
-        /* Vanta.js Background */
-        #vanta-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+        body.light {
+            background-color: #fff;
+            color: #333;
         }
 
-        /* Navigation */
-        .navbar {
+        .theme-toggle {
             position: fixed;
-            top: 0;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 1px solid #666;
+            color: #fff;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: #fff;
+        }
+
+        body.light .theme-toggle {
+            color: #333;
+            border-color: #333;
+        }
+
+        body.light .theme-toggle:hover {
+            border-color: #000;
+        }
+
+        .nav {
+            margin-bottom: 40px;
+            text-align: right;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+
+        body.light .nav {
+            border-bottom: 1px solid #eee;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin: 0 0 0 30px;
+            color: #666;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.2s;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #fff;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -21px;
             left: 0;
             right: 0;
-            background: transparent;
-            z-index: 1000;
-            padding: 2rem 2rem;
-            pointer-events: none;
+            height: 2px;
+            background-color: #fff;
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            pointer-events: auto;
+        body.light .nav-link {
+            color: #666;
         }
 
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ff6b35;
+        body.light .nav-link:hover,
+        body.light .nav-link.active {
+            color: #000;
+        }
+
+        body.light .nav-link.active::after {
+            background-color: #000;
+        }
+
+        .content {
+            min-height: 400px;
+        }
+
+        .tab {
+            display: none;
+        }
+
+        .tab.active {
+            display: block;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        body.light h1 {
+            color: #000;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        body.light h2 {
+            color: #000;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        body.light p {
+            color: #666;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        a:hover {
             text-decoration: none;
-            letter-spacing: -0.02em;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
+        body.light a {
+            color: #000;
+        }
+
+        .contact {
+            margin-top: 30px;
+            font-size: 16px;
+        }
+
+        .work-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        body.light .work-item {
+            border-bottom: 1px solid #eee;
+        }
+
+        .work-item:last-child {
+            border-bottom: none;
+        }
+
+        .work-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        body.light .work-title {
+            color: #000;
+        }
+
+        .work-company {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        body.light .work-company {
+            color: #666;
+        }
+
+        .work-description {
+            color: #ccc;
+            font-size: 15px;
+        }
+
+        body.light .work-description {
+            color: #666;
+        }
+
+        .cv-section {
+            margin-bottom: 30px;
+        }
+
+        .cv-item {
+            margin-bottom: 15px;
+        }
+
+        .cv-date {
+            color: #888;
+            font-size: 14px;
+        }
+
+        body.light .cv-date {
+            color: #999;
+        }
+
+        /* Connect Section */
+        .connect-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+        }
+
+        body.light .connect-section {
+            border-top: 1px solid #eee;
+        }
+
+        .connect-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .connect-description {
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        body.light .connect-description {
+            color: #666;
+        }
+
+        .social-links {
             list-style: none;
         }
 
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.8);
+        .social-links li {
+            margin-bottom: 12px;
+        }
+
+        .social-links a {
+            color: #fff;
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            position: relative;
+            font-size: 16px;
+            display: block;
+            padding: 5px 0;
+            transition: color 0.2s;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #ff6b35;
-            background: rgba(255, 107, 53, 0.1);
+        .social-links a:hover {
+            color: #888;
         }
 
-        /* Main Content Container */
-        .main-container {
-            min-height: 100vh;
-            position: relative;
+        body.light .social-links a {
+            color: #000;
         }
 
-        /* Home Page */
-        .home-hero {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            position: relative;
-            padding: 2rem;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff 0%, #ff6b35 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* Copyright Footer */
-        .copyright-footer {
-            position: fixed;
-            bottom: 1rem;
-            left: 0;
-            right: 0;
-            padding: 0;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.8rem;
-            z-index: 999;
-            pointer-events: none;
-        }
-
-        .copyright-footer .copyright-text {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .copyright-footer .copyright-name {
-            color: rgba(255, 107, 53, 0.6);
-            font-weight: 600;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        /* Mobile Navigation */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(0, 0, 0, 0.95);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 1rem;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 0 0 1rem 1rem;
-            }
-            
-            .nav-links.mobile-open {
-                display: flex;
-            }
-        }
-
-        /* Loading animation for vanta */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(255, 107, 53, 0.3);
-            border-top: 3px solid #ff6b35;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        body.light .social-links a:hover {
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loader"></div>
-    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">⚪ Light</button>
 
-    <div id="vanta-background"></div>
-
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">AP</a>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="cv.html" class="nav-link">CV</a></li>
-                <li><a href="notes.html" class="nav-link">Lecture Notes</a></li>
-                <li><a href="interests.html" class="nav-link">Interests & Expertise</a></li>
-            </ul>
-        </div>
+    <nav class="nav">
+        <span class="nav-link active" onclick="showTab('about')">about me</span>
+        <span class="nav-link" onclick="showTab('cv')">cv</span>
+        <span class="nav-link" onclick="showTab('work')">work</span>
     </nav>
 
-    <div class="main-container">
-        <div class="home-hero">
-            <div class="hero-content">
-                <h1>Andrés Puteri</h1>
-                <p>Mathematics Student & Tutor</p>
-                <div class="hero-buttons">
-                    <a href="cv.html" class="btn btn-primary">View CV</a>
-                    <a href="notes.html" class="btn btn-secondary">Lecture Notes</a>
+    <div class="content">
+        <!-- About Me Tab -->
+        <div id="about" class="tab active">
+            <h1>Andres  Puteri</h1>
+            <p>I'm a Pure Maths student at the University of Melbourne, based in Melbourne, Australia. I'm passionate about maths, coding, and human physiology.</p>
+            
+            <p>Currently, I work at HZ Tutoring, where I work as a Mathematics tutor. I have experience teaching VCE and Junior Maths, and I love sharing my knowledge with others.</p>
+            
+            <p>When I'm not working, you can find me at my Jiu Jitsu club.</p>
+            
+            <div class="contact">
+                <p>Reach me at <a href="mailto:your.email@domain.com">your.email@domain.com</a> or connect with me on <a href="#">LinkedIn</a>.</p>
+            </div>
+        </div>
+
+        <!-- CV Tab -->
+        <div id="cv" class="tab">
+            <h1>CV</h1>
+            
+            <div class="cv-section">
+                <h2>Education</h2>
+                <div class="cv-item">
+                    <strong>Ph.D. in [Field]</strong><br>
+                    [University Name] <span class="cv-date">2018 - 2022</span>
                 </div>
+                <div class="cv-item">
+                    <strong>M.S. in [Field]</strong><br>
+                    [University Name] <span class="cv-date">2016 - 2018</span>
+                </div>
+                <div class="cv-item">
+                    <strong>B.S. in [Field]</strong><br>
+                    [University Name] <span class="cv-date">2012 - 2016</span>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h2>Experience</h2>
+                <div class="cv-item">
+                    <strong>[Your Current Title]</strong><br>
+                    [Company Name] <span class="cv-date">2022 - Present</span>
+                </div>
+                <div class="cv-item">
+                    <strong>[Previous Title]</strong><br>
+                    [Company Name] <span class="cv-date">2020 - 2022</span>
+                </div>
+                <div class="cv-item">
+                    <strong>[Earlier Title]</strong><br>
+                    [Company Name] <span class="cv-date">2018 - 2020</span>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h2>Skills</h2>
+                <p>[List your key skills, technologies, languages, etc.]</p>
+            </div>
+
+            <p><a href="cv.pdf">Download full CV (PDF)</a></p>
+        </div>
+
+        <!-- Work Tab -->
+        <div id="work" class="tab">
+            <h1>Work</h1>
+            
+            <div class="work-item">
+                <div class="work-title">Project Name One</div>
+                <div class="work-company">Company/Client Name</div>
+                <div class="work-description">Brief description of what this project involved, the technologies used, and the impact it had. Keep it concise but informative.</div>
+            </div>
+
+            <div class="work-item">
+                <div class="work-title">Project Name Two</div>
+                <div class="work-company">Company/Client Name</div>
+                <div class="work-description">Another project description highlighting your contributions and the results achieved.</div>
+            </div>
+
+            <div class="work-item">
+                <div class="work-title">Project Name Three</div>
+                <div class="work-company">Company/Client Name</div>
+                <div class="work-description">Description of a third project, showing the breadth of your work and expertise.</div>
+            </div>
+
+            <div class="work-item">
+                <div class="work-title">Open Source Contribution</div>
+                <div class="work-company">GitHub</div>
+                <div class="work-description">Description of open source work, personal projects, or community contributions you've made.</div>
             </div>
         </div>
     </div>
 
-    <footer class="copyright-footer">
-        <div class="copyright-text">
-            © 2025 <span class="copyright-name">Andrés Puteri</span>. All rights reserved.
-        </div>
-    </footer>
+    <!-- Connect Section -->
+    <div class="connect-section">
+        <h2>Connect</h2>
+        <p class="connect-description">
+            Reach me at <a href="mailto:your.email@domain.com">your.email@domain.com</a> or <a href="mailto:business@domain.com">business@domain.com</a> for business inquiries. Join my <a href="#">Discord</a> community or connect with me on the platforms below.
+        </p>
+        
+        <ul class="social-links">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Twitter</a></li>
+        </ul>
+    </div>
 
     <script>
-        let vantaEffect;
-
-        // Initialize Vanta.js background
-        function initVanta() {
-            try {
-                vantaEffect = VANTA.NET({
-                    el: "#vanta-background",
-                    mouseControls: true,
-                    touchControls: true,
-                    gyroControls: false,
-                    minHeight: 200.00,
-                    minWidth: 200.00,
-                    scale: 1.00,
-                    scaleMobile: 1.00,
-                    color: 0xff6b35,
-                    backgroundColor: 0x000000,
-                    points: 15.00,
-                    maxDistance: 25.00,
-                    spacing: 15.00
-                });
-                
-                // Hide loading overlay once vanta is loaded
-                setTimeout(() => {
-                    const loadingOverlay = document.getElementById('loadingOverlay');
-                    loadingOverlay.classList.add('hidden');
-                }, 1000);
-                
-            } catch (error) {
-                console.log('Vanta.js failed to load, using fallback background');
-                document.getElementById('vanta-background').style.background = 
-                    'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)';
-                const loadingOverlay = document.getElementById('loadingOverlay');
-                loadingOverlay.classList.add('hidden');
-            }
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked nav link
+            event.target.classList.add('active');
         }
 
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('mobile-open');
+        function toggleTheme() {
+            const body = document.body;
+            const toggle = document.querySelector('.theme-toggle');
+            
+            if (body.classList.contains('light')) {
+                body.classList.remove('light');
+                toggle.innerHTML = '⚪ Light';
+            } else {
+                body.classList.add('light');
+                toggle.innerHTML = '⚫ Dark';
+            }
         }
-
-        // Initialize everything when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            // Wait a bit for Three.js to load
-            setTimeout(initVanta, 500);
-        });
-
-        // Cleanup vanta on page unload
-        window.addEventListener('beforeunload', () => {
-            if (vantaEffect) {
-                vantaEffect.destroy();
-            }
-        });
-
-        // Resize handler for vanta
-        window.addEventListener('resize', () => {
-            if (vantaEffect) {
-                vantaEffect.resize();
-            }
-        });
     </script>
 </body>
 </html>
