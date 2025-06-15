@@ -58,7 +58,22 @@
             margin-bottom: 40px;
             text-align: right;
             border-bottom: 1px solid #333;
-            padding-bottom: 20px;
+            padding-bottom: 15px;
+            position: relative;
+        }
+
+        .nav-background {
+            position: absolute;
+            top: 0;
+            background-color: #444;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            z-index: 0;
+            opacity: 0;
+        }
+
+        body.light .nav-background {
+            background-color: #d0d0d0;
         }
 
         body.light .nav {
@@ -72,37 +87,31 @@
             text-decoration: none;
             font-size: 16px;
             cursor: pointer;
-            transition: color 0.2s;
+            transition: color 0.3s ease;
             position: relative;
-            padding-bottom: 20px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            z-index: 1;
         }
 
-        .nav-link:hover,
-        .nav-link.active {
+        .nav-link:hover {
             color: #fff;
         }
 
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -21px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background-color: #fff;
+        .nav-link.active {
+            color: #fff;
         }
 
         body.light .nav-link {
             color: #666;
         }
 
-        body.light .nav-link:hover,
-        body.light .nav-link.active {
+        body.light .nav-link:hover {
             color: #000;
         }
 
-        body.light .nav-link.active::after {
-            background-color: #000;
+        body.light .nav-link.active {
+            color: #000;
         }
 
         .content {
@@ -160,11 +169,6 @@
 
         body.light a {
             color: #000;
-        }
-
-        .contact {
-            margin-top: 30px;
-            font-size: 16px;
         }
 
         .work-item {
@@ -281,15 +285,73 @@
         body.light .social-links a:hover {
             color: #666;
         }
+
+        /* Coming Soon Section */
+        .coming-soon {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 30px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #111;
+        }
+
+        body.light .coming-soon {
+            border-color: #ddd;
+            background-color: #f9f9f9;
+        }
+
+        .coming-soon h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        body.light .coming-soon h2 {
+            color: #000;
+        }
+
+        .coming-soon ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .coming-soon li {
+            margin-bottom: 8px;
+            color: #ccc;
+        }
+
+        body.light .coming-soon li {
+            color: #666;
+        }
+
+        /* Bold social links */
+        .social-links a {
+            font-weight: bold;
+        }
+
+        .connect-section p a {
+            font-weight: normal;
+        }
+
+        /* Bold social links */
+        .social-links a {
+            font-weight: bold;
+        }
+
+        .connect-section a {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <button class="theme-toggle" onclick="toggleTheme()">⚪ Light</button>
 
     <nav class="nav">
-        <span class="nav-link active" onclick="showTab('about')">about me</span>
-        <span class="nav-link" onclick="showTab('cv')">cv</span>
-        <span class="nav-link" onclick="showTab('work')">work</span>
+        <div class="nav-background"></div>
+        <span class="nav-link active" onclick="showTab('Index')" onmouseenter="moveBackground(this)" onmouseleave="resetBackground()">Index</span>
+        <span class="nav-link" onclick="showTab('CV')" onmouseenter="moveBackground(this)" onmouseleave="resetBackground()">CV</span>
+        <span class="nav-link" onclick="showTab('Notes')" onmouseenter="moveBackground(this)" onmouseleave="resetBackground()">Notes</span>
     </nav>
 
     <div class="content">
@@ -302,54 +364,41 @@
 
             <p>When I'm not working, you can find me at my Jiu-Jitsu club. I'm always eager to meet new people.</p>
 
+            <div class="connect-separator"></div>
             
-            <div class="contact">
+            <div class="connect-section">
+                <h2>Connect</h2>
                 <p>Reach me at <a href="mailto:andres.puteri06@gmail.com">andres.puteri06@gmail.com</a> or connect with me on <a href="https://www.linkedin.com/in/andr%C3%A9s-puteri/">LinkedIn</a>.</p>
+                
+                <ul class="social-links">
+                <li><a href="https://www.instagram.com/andres.puteri/" target="_blank">Instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/andr%C3%A9s-puteri/" target="_blank">LinkedIn</a></li>
+                <li><a href="https://github.com/andresputeri1" target="_blank">GitHub</a></li>
+            </ul>
             </div>
-            
-             <ul class="social-links">
-            <li><a href="https://www.instagram.com/andres.puteri/" target="_blank">Instagram</a></li>
-            <li><a href="https://www.linkedin.com/in/andr%C3%A9s-puteri/" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/andresputeri1" target="_blank">GitHub</a></li>
-        </ul>
 
         </div>
 
         <!-- CV Tab -->
-        <p>You can download a copy of my CV via the link below.</p>
-
         <div id="CV" class="tab">
-    <p><a href="cv.pdf">Download full CV (PDF)</a></p>
-</div>
+            <h1>CV</h1>
+            <p>You can download a copy of my CV via the link below.</p>
+            <p><a href="cv.pdf">Download full CV (PDF)</a></p>
+        </div>
 
-          
-
-        <!-- Work Tab -->
-        <div id="Work" class="tab">
-            <h1>Work</h1>
+        <!-- Notes Tab -->
+        <div id="Notes" class="tab">
+            <h1>Study Notes</h1>
+            <p>My study notes for various mathematics and computer science subjects will be available here soon.</p>
             
-            <div class="work-item">
-                <div class="work-title">Mathematical Methods Study Resources</div>
-                <div class="work-company">HZ Tutoring</div>
-                <div class="work-description">Created comprehensive 20+ page study guides and resources for VCE Mathematical Methods students. These materials have become an indispensable resource for students, covering units 1/2 and 3/4 curriculum with detailed explanations and practice problems.</div>
-            </div>
-
-            <div class="work-item">
-                <div class="work-title">Educational Content Publishing</div>
-                <div class="work-company">VCE Vanguard Coaching</div>
-                <div class="work-description">Editing, formatting, and publishing educational resources for VCE students. Working collaboratively to ensure high-quality content delivery for online education platforms.</div>
-            </div>
-
-            <div class="work-item">
-                <div class="work-title">Python Programming Projects</div>
-                <div class="work-company">Personal Development</div>
-                <div class="work-description">Developing programming skills in Python and C++ through various mathematical and computational projects. Focus on applying programming concepts to solve mathematical problems and data analysis.</div>
-            </div>
-
-            <div class="work-item">
-                <div class="work-title">GitHub Portfolio</div>
-                <div class="work-company">GitHub</div>
-                <div class="work-description">Maintaining a collection of programming projects and mathematical implementations. <a href="https://github.com/andresputeri1" target="_blank">View my repositories</a> to see my latest work in Python, LaTeX, and other technologies.</div>
+            <div class="coming-soon">
+                <h2>Coming Soon</h2>
+                <p>I'm currently organizing my notes for:</p>
+                <ul>
+                    <li>Linear Algebra</li>
+                    <li>Calculus 2</li>
+                    <li>Foundations of Computing</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -370,6 +419,9 @@
             
             // Add active class to clicked nav link
             event.target.classList.add('active');
+            
+            // Move background to active tab
+            moveBackgroundToActive();
         }
 
         function toggleTheme() {
@@ -384,6 +436,37 @@
                 toggle.innerHTML = '⚫ Dark';
             }
         }
+
+        function moveBackground(element) {
+            const background = document.querySelector('.nav-background');
+            const rect = element.getBoundingClientRect();
+            const navRect = element.parentElement.getBoundingClientRect();
+            
+            background.style.opacity = '1';
+            background.style.left = (rect.left - navRect.left) + 'px';
+            background.style.width = rect.width + 'px';
+            background.style.height = rect.height + 'px';
+            background.style.top = (rect.top - navRect.top) + 'px';
+        }
+
+        function resetBackground() {
+            moveBackgroundToActive();
+        }
+
+        function moveBackgroundToActive() {
+            const activeLink = document.querySelector('.nav-link.active');
+            if (activeLink) {
+                moveBackground(activeLink);
+            } else {
+                const background = document.querySelector('.nav-background');
+                background.style.opacity = '0';
+            }
+        }
+
+        // Initialize background position on page load
+        window.addEventListener('load', function() {
+            moveBackgroundToActive();
+        });
     </script>
 </body>
 </html>
