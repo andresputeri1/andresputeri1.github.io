@@ -1,0 +1,256 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.6;
+    color: #4a3f35;
+    background-color: #faf8f4;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header and Hero Section */
+header {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f8f5f0 0%, #f0ebe3 50%, #e8ddd1 100%);
+    border-radius: 0 0 30px 30px;
+    margin-bottom: 50px;
+}
+
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    text-align: center;
+}
+
+.fractal-container {
+    flex-shrink: 0;
+}
+
+.fractal-svg {
+    filter: drop-shadow(0 4px 15px rgba(139, 115, 85, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.fractal-svg:hover {
+    transform: scale(1.05);
+}
+
+.math-symbol {
+    font-family: 'Times New Roman', serif;
+    font-size: 24px;
+    fill: #6B5B4F;
+    font-weight: bold;
+}
+
+.intro-text h1 {
+    font-size: 2.8rem;
+    color: #5a4a3a;
+    margin-bottom: 8px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: #7a6a5a;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.university {
+    font-size: 1.1rem;
+    color: #8b7b6b;
+    font-weight: 500;
+}
+
+/* Main content */
+main {
+    padding: 0 0 40px 0;
+}
+
+section {
+    margin-bottom: 50px;
+    padding: 0;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #5a4a3a;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0d5c7;
+    padding-bottom: 8px;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 1.3rem;
+    color: #6a5a4a;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+p {
+    margin-bottom: 15px;
+    text-align: justify;
+    font-size: 1.05rem;
+}
+
+/* Academic section */
+.academics h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #6a5a4a;
+    font-size: 1.3rem;
+}
+
+.academics h3:first-of-type {
+    margin-top: 20px;
+}
+
+.academics ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 15px 0 25px 0;
+}
+
+.academics li {
+    padding: 8px 0;
+    color: #6a5a4a;
+    position: relative;
+    padding-left: 20px;
+    border-bottom: 1px solid #e8ddd1;
+}
+
+.academics li:before {
+    content: "∙";
+    color: #a0896b;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+.academics li:last-child {
+    border-bottom: none;
+}
+
+/* Contact section */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.contact-icon {
+    flex-shrink: 0;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.contact-item:hover .contact-icon {
+    opacity: 1;
+}
+
+.contact-item a {
+    color: #7a5a3a;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 1.05rem;
+}
+
+.contact-item a:hover {
+    color: #5a4a3a;
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 40px;
+    border-top: 2px solid #e8ddd1;
+    color: #8b7b6b;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .fractal-svg {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .intro-text h1 {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .university {
+        font-size: 1rem;
+    }
+    
+    
+    section {
+        padding: 0;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .contact-item {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 40px 0;
+    }
+    
+    .intro-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .fractal-svg {
+        width: 120px;
+        height: 120px;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+    
+    section {
+        margin-bottom: 30px;
+        padding: 0;
+    }
+}
