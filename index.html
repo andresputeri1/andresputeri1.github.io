@@ -3,470 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andres Puteri</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-           font-family: Georgia, 'Times New Roman', Times, serif;
-            line-height: 1.6;
-            background-color: #000;
-            color: #fff;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            transition: all 0.3s ease;
-        }
-
-        body.light {
-            background-color: #fff;
-            color: #333;
-        }
-
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: 1px solid #666;
-            color: #fff;
-            padding: 8px 12px;
-            cursor: pointer;
-            font-size: 14px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            border-color: #fff;
-        }
-
-        body.light .theme-toggle {
-            color: #333;
-            border-color: #333;
-        }
-
-        body.light .theme-toggle:hover {
-            border-color: #000;
-        }
-
-        .nav {
-            margin-bottom: 40px;
-            text-align: right;
-            border-bottom: 1px solid #333;
-            padding-bottom: 15px;
-            position: relative;
-        }
-
-        .nav-background {
-            position: absolute;
-            top: 0;
-            background-color: #444;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            z-index: 0;
-            opacity: 0;
-        }
-
-        body.light .nav-background {
-            background-color: #d0d0d0;
-        }
-
-        body.light .nav {
-            border-bottom: 1px solid #eee;
-        }
-
-        .nav-link {
-            display: inline-block;
-            margin: 0 0 0 30px;
-            color: #666;
-            text-decoration: none;
-            font-size: 16px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-            position: relative;
-            padding: 8px 12px;
-            border-radius: 4px;
-            z-index: 1;
-        }
-
-        .nav-link:hover {
-            color: #fff;
-        }
-
-        .nav-link.active {
-            color: #fff;
-        }
-
-        body.light .nav-link {
-            color: #666;
-        }
-
-        body.light .nav-link:hover {
-            color: #000;
-        }
-
-        body.light .nav-link.active {
-            color: #000;
-        }
-
-        .content {
-            min-height: 400px;
-        }
-
-        .tab {
-            display: none;
-        }
-
-        .tab.active {
-            display: block;
-        }
-
-        h1 {
-            font-size: 28px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        body.light h1 {
-            color: #000;
-        }
-
-        h2 {
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-
-        body.light h2 {
-            color: #000;
-        }
-
-        p {
-            margin-bottom: 20px;
-            font-size: 16px;
-            color: #ccc;
-        }
-
-        body.light p {
-            color: #666;
-        }
-
-        a {
-            color: #fff;
-            text-decoration: underline;
-        }
-
-        a:hover {
-            text-decoration: none;
-        }
-
-        body.light a {
-            color: #000;
-        }
-
-        .work-item {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #333;
-        }
-
-        body.light .work-item {
-            border-bottom: 1px solid #eee;
-        }
-
-        .work-item:last-child {
-            border-bottom: none;
-        }
-
-        .work-title {
-            font-size: 18px;
-            font-weight: 500;
-            margin-bottom: 5px;
-            color: #fff;
-        }
-
-        body.light .work-title {
-            color: #000;
-        }
-
-        .work-company {
-            color: #888;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        body.light .work-company {
-            color: #666;
-        }
-
-        .work-description {
-            color: #ccc;
-            font-size: 15px;
-        }
-
-        body.light .work-description {
-            color: #666;
-        }
-
-        .cv-section {
-            margin-bottom: 30px;
-        }
-
-        .cv-item {
-            margin-bottom: 15px;
-        }
-
-        .cv-date {
-            color: #888;
-            font-size: 14px;
-        }
-
-        body.light .cv-date {
-            color: #999;
-        }
-
-        /* Connect Section */
-        .connect-section {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid #333;
-        }
-
-        body.light .connect-section {
-            border-top: 1px solid #eee;
-        }
-
-        .connect-section h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .connect-description {
-            margin-bottom: 30px;
-            color: #ccc;
-        }
-
-        body.light .connect-description {
-            color: #666;
-        }
-
-        .social-links {
-            list-style: none;
-        }
-
-        .social-links li {
-            margin-bottom: 12px;
-        }
-
-        .social-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            display: block;
-            padding: 5px 0;
-            transition: color 0.2s;
-        }
-
-        .social-links a:hover {
-            color: #888;
-        }
-
-        body.light .social-links a {
-            color: #000;
-        }
-
-        body.light .social-links a:hover {
-            color: #666;
-        }
-
-        /* Coming Soon Section */
-        .coming-soon {
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 30px;
-            border: 1px solid #333;
-            border-radius: 8px;
-            background-color: #111;
-        }
-
-        body.light .coming-soon {
-            border-color: #ddd;
-            background-color: #f9f9f9;
-        }
-
-        .coming-soon h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        body.light .coming-soon h2 {
-            color: #000;
-        }
-
-        .coming-soon ul {
-            list-style: none;
-            margin-top: 15px;
-        }
-
-        .coming-soon li {
-            margin-bottom: 8px;
-            color: #ccc;
-        }
-
-        body.light .coming-soon li {
-            color: #666;
-        }
-
-        /* Bold social links */
-        .social-links a {
-            font-weight: bold;
-        }
-
-        .connect-section p a {
-            font-weight: normal;
-        }
-
-        /* Bold social links */
-        .social-links a {
-            font-weight: bold;
-        }
-
-        .connect-section a {
-            font-weight: bold;
-        }
-    </style>
+    <title>Andrés Puteri - Mathematics Student</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()">⚪ Light</button>
-
-    <nav class="nav">
-        <div class="nav-background"></div>
-        <span class="nav-link active" onclick="showTab('Index')" onmouseenter="moveBackground(this)" onmouseleave="resetBackground()">Index</span>
-        <span class="nav-link" onclick="showTab('CV')" onmouseenter="moveBackground(this)" onmouseleave="resetBackground()">CV</span>
-        <span class="nav-link" onclick="showTab('Notes')" onmouseenter="moveBackground(this)" onmouseleave="resetBackground()">Notes</span>
-    </nav>
-
-    <div class="content">
-        <!-- About Me Tab -->
-        <div id="Index" class="tab active">
-            <h1>Andres Puteri</h1>
-            <p>I'm a Pure Mathematics student at the University of Melbourne, based in Melbourne, Australia. I'm passionate about tutoring and developing educational resources.</p>
-
-            <p>Currently, I work at HZ Tutoring as a mathematics tutor, teaching VCE Maths. I also have experience in resource development through my role at VCE Vanguard Education.</p>
-
-            <p>When I'm not working, you can find me at my Jiu-Jitsu club. I'm always eager to meet new people.</p>
-
-            <div class="connect-separator"></div>
-            
-            <div class="connect-section">
-                <h2>Connect</h2>
-                <p>Reach me at <a href="mailto:andres.puteri06@gmail.com">andres.puteri06@gmail.com</a> or connect with me on <a href="https://www.linkedin.com/in/andr%C3%A9s-puteri/">LinkedIn</a>.</p>
-                
-                <ul class="social-links">
-                <li><a href="https://www.instagram.com/andres.puteri/" target="_blank">Instagram</a></li>
-                <li><a href="https://www.linkedin.com/in/andr%C3%A9s-puteri/" target="_blank">LinkedIn</a></li>
-                <li><a href="https://github.com/andresputeri1" target="_blank">GitHub</a></li>
-            </ul>
+    <div class="container">
+        <header>
+            <div class="hero-section">
+                <div class="fractal-container">
+                    <!-- Mandelbrot Set SVG -->
+                    <svg width="200" height="200" viewBox="0 0 200 200" class="fractal-svg">
+                        <defs>
+                            <radialGradient id="fractalGrad" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" style="stop-color:#8B7355;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#A0896B;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#D4C4A8;stop-opacity:0.6" />
+                            </radialGradient>
+                        </defs>
+                        
+                        <!-- Main fractal shape -->
+                        <circle cx="100" cy="100" r="80" fill="url(#fractalGrad)" opacity="0.9"/>
+                        <circle cx="100" cy="100" r="60" fill="none" stroke="#6B5B4F" stroke-width="1.5" opacity="0.7"/>
+                        <circle cx="100" cy="100" r="40" fill="none" stroke="#8B7355" stroke-width="1" opacity="0.8"/>
+                        <circle cx="100" cy="100" r="20" fill="none" stroke="#A0896B" stroke-width="0.8" opacity="0.9"/>
+                        
+                        <!-- Spiral patterns -->
+                        <path d="M 100 20 Q 180 100 100 180 Q 20 100 100 20" fill="none" stroke="#7A6A5A" stroke-width="1.2" opacity="0.6"/>
+                        <path d="M 40 100 Q 100 40 160 100 Q 100 160 40 100" fill="none" stroke="#8B7355" stroke-width="1" opacity="0.7"/>
+                        
+                        <!-- Mathematical symbols -->
+                        <text x="100" y="105" text-anchor="middle" class="math-symbol">∞</text>
+                    </svg>
+                </div>
+                <div class="intro-text">
+                    <h1>Andrés Puteri</h1>
+                    <p class="subtitle">First Year Pure Mathematics Student</p>
+                    <p class="university">University of Melbourne</p>
+                </div>
             </div>
+        </header>
 
-        </div>
+        <main>
+            <section class="about">
+                <h2>About Me</h2>
+                <p>I am a first-year student at the University of Melbourne, pursuing a degree in Pure Mathematics. 
+                I am passionate about exploring the fundamental structures and patterns that govern mathematical theory, 
+                from abstract algebra to real analysis and beyond.</p>
+                <p>My academic journey is focused on developing a deep understanding of mathematical concepts 
+                and their interconnections, while building a strong foundation for advanced mathematical research.</p>
+            </section>
 
-        <!-- CV Tab -->
-        <div id="CV" class="tab">
-            <h1>CV</h1>
-            <p>You can download a copy of my CV via the link below.</p>
-            <p><a href="cv.pdf">Download full CV (PDF)</a></p>
-        </div>
-
-        <!-- Notes Tab -->
-        <div id="Notes" class="tab">
-            <h1>Study Notes</h1>
-            <p>My study notes for various mathematics and computer science subjects will be available here soon.</p>
-            
-            <div class="coming-soon">
-                <h2>Coming Soon</h2>
-                <p>I'm currently organizing my notes for:</p>
+            <section class="academics">
+                <h2>Academic Work</h2>
+                
+                <h3>Course Notes</h3>
+                <p>Comprehensive notes from my mathematics courses, including:</p>
                 <ul>
                     <li>Linear Algebra</li>
-                    <li>Calculus 2</li>
-                    <li>Foundations of Computing</li>
+                    <li>Calculus and Analysis</li>
+                    <li>Discrete Mathematics</li>
+                    <li>Mathematical Reasoning</li>
                 </ul>
-            </div>
-        </div>
+                
+                <h3>Problem Sets</h3>
+                <p>Solutions to challenging mathematical problems and exercises that demonstrate 
+                problem-solving techniques and mathematical reasoning.</p>
+                
+                <h3>Research Interests</h3>
+                <p>Developing interests in various areas of pure mathematics, including 
+                number theory, abstract algebra, and mathematical analysis.</p>
+            </section>
+
+            <section class="contact">
+                <h2>Contact</h2>
+                <div class="contact-links">
+                    <div class="contact-item">
+                        <svg class="contact-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#7a5a3a" stroke-width="2" fill="none"/>
+                            <polyline points="22,6 12,13 2,6" stroke="#7a5a3a" stroke-width="2" fill="none"/>
+                        </svg>
+                        <a href="mailto:aputeri@student.unimelb.edu.au">aputeri@student.unimelb.edu.au</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" fill="#7a5a3a"/>
+                            <rect x="2" y="9" width="4" height="12" fill="#7a5a3a"/>
+                            <circle cx="4" cy="4" r="2" fill="#7a5a3a"/>
+                        </svg>
+                        <a href="https://www.linkedin.com/in/andr%C3%A9s-puteri/" target="_blank">linkedin.com/in/andrés-puteri</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="#7a5a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        <a href="https://github.com/andresputeri1" target="_blank">github.com/andresputeri1</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Andrés Puteri</p>
+        </footer>
     </div>
-
-  
-    <script>
-        function showTab(tabName) {
-            // Hide all tabs
-            const tabs = document.querySelectorAll('.tab');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            
-            // Remove active class from all nav links
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => link.classList.remove('active'));
-            
-            // Show selected tab
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to clicked nav link
-            event.target.classList.add('active');
-            
-            // Move background to active tab
-            moveBackgroundToActive();
-        }
-
-        function toggleTheme() {
-            const body = document.body;
-            const toggle = document.querySelector('.theme-toggle');
-            
-            if (body.classList.contains('light')) {
-                body.classList.remove('light');
-                toggle.innerHTML = '⚪ Light';
-            } else {
-                body.classList.add('light');
-                toggle.innerHTML = '⚫ Dark';
-            }
-        }
-
-        function moveBackground(element) {
-            const background = document.querySelector('.nav-background');
-            const rect = element.getBoundingClientRect();
-            const navRect = element.parentElement.getBoundingClientRect();
-            
-            background.style.opacity = '1';
-            background.style.left = (rect.left - navRect.left) + 'px';
-            background.style.width = rect.width + 'px';
-            background.style.height = rect.height + 'px';
-            background.style.top = (rect.top - navRect.top) + 'px';
-        }
-
-        function resetBackground() {
-            moveBackgroundToActive();
-        }
-
-        function moveBackgroundToActive() {
-            const activeLink = document.querySelector('.nav-link.active');
-            if (activeLink) {
-                moveBackground(activeLink);
-            } else {
-                const background = document.querySelector('.nav-background');
-                background.style.opacity = '0';
-            }
-        }
-
-        // Initialize background position on page load
-        window.addEventListener('load', function() {
-            moveBackgroundToActive();
-        });
+</body>
+</html>
     </script>
 </body>
 </html>
