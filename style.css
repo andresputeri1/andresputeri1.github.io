@@ -150,6 +150,49 @@ p {
     border-bottom: none;
 }
 
+/* Talks section */
+.talks h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #6a5a4a;
+    font-size: 1.3rem;
+}
+
+.talks h3:first-of-type {
+    margin-top: 20px;
+}
+
+.talks ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 15px 0 25px 0;
+}
+
+.talks li {
+    padding: 8px 0;
+    color: #6a5a4a;
+    position: relative;
+    padding-left: 20px;
+    border-bottom: 1px solid #e8ddd1;
+}
+
+.talks li:before {
+    content: "∙";
+    color: #a0896b;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+.talks li:last-child {
+    border-bottom: none;
+}
+
+
+
+
+
 /* Contact section */
 .contact-links {
     display: flex;
