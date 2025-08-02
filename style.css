@@ -150,6 +150,17 @@ p {
     border-bottom: none;
 }
 
+.academics a {
+    color: #6a5a4a;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.academics a:hover {
+    color: #5a4a3a;
+    text-decoration: underline;
+}
+
 /* Talks section */
 .talks h3 {
     margin-top: 30px;
@@ -192,6 +203,62 @@ p {
 
 
 
+
+/* Notes pages */
+.notes-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 15px 0 25px 0;
+}
+
+.notes-list li {
+    padding: 12px 0;
+    color: #6a5a4a;
+    position: relative;
+    padding-left: 20px;
+    border-bottom: 1px solid #e8ddd1;
+}
+
+.notes-list li:before {
+    content: "📄";
+    position: absolute;
+    left: 0;
+    font-size: 1rem;
+}
+
+.notes-list li:last-child {
+    border-bottom: none;
+}
+
+.notes-list a {
+    color: #6a5a4a;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 1.05rem;
+}
+
+.notes-list a:hover {
+    color: #5a4a3a;
+    text-decoration: underline;
+}
+
+.back-link {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e8ddd1;
+}
+
+.back-link a {
+    color: #7a6a5a;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.back-link a:hover {
+    color: #5a4a3a;
+    text-decoration: underline;
+}
 
 /* Contact section */
 .contact-links {
