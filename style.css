@@ -153,12 +153,13 @@ p {
 .academics a {
     color: #6a5a4a;
     text-decoration: none;
-    transition: color 0.2s ease;
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
 
 .academics a:hover {
     color: #5a4a3a;
-    text-decoration: underline;
+    transform: translateX(3px);
 }
 
 /* Talks section */
@@ -233,31 +234,37 @@ p {
 .notes-list a {
     color: #6a5a4a;
     text-decoration: none;
-    transition: color 0.2s ease;
+    font-weight: 500;
+    transition: all 0.2s ease;
     font-size: 1.05rem;
 }
 
 .notes-list a:hover {
     color: #5a4a3a;
-    text-decoration: underline;
+    transform: translateX(3px);
 }
 
-.back-link {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #e8ddd1;
+.back-nav {
+    margin-bottom: 20px;
 }
 
-.back-link a {
-    color: #7a6a5a;
+.back-nav a {
+    display: inline-block;
+    color: #8b7b6b;
     text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.2s ease;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    border: 1px solid #e0d5c7;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+    background-color: #faf8f4;
 }
 
-.back-link a:hover {
+.back-nav a:hover {
     color: #5a4a3a;
-    text-decoration: underline;
+    border-color: #d0c5b7;
+    background-color: #f5f3ef;
+    transform: translateY(-1px);
 }
 
 /* Contact section */
